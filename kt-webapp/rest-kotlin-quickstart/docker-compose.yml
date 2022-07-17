@@ -1,0 +1,21 @@
+version: '3'
+services:
+  testdb:
+    image: postgres:14
+    networks:
+      - testnw
+    volumes:
+      - testdb:/var/lib/postgresql/data/
+      - ./scripts/pg-init/:/docker-entrypoint-initdb.d/
+    ports:
+      - "15432:5432"
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: testdb
+
+networks:
+  testnw:
+
+volumes:
+  testdb: {}
