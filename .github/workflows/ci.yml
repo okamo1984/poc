@@ -1,0 +1,20 @@
+name: ci
+on:
+  push:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v2
+
+      - name: Install Deno
+        uses: denoland/setup-deno@v1
+
+      - name: Check formatting
+        run: deno fmt --check ./deno-poc
+
+      - name: Lint
+        run: deno lint ./deno-poc
