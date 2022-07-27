@@ -15,8 +15,7 @@ export default function NavigationBar({ loginUser, loginUrl }: Props) {
   };
   return (
     <header
-      class={tw
-        `flex items-center justify-between fixed top-0 z-40 w-full bg-white-90 backdrop-blur border-b-1 border-transparent lt-md:!border-gray-200/60 h-16 px-8 lt-md:!px-4`}
+      class={tw`flex items-center justify-between fixed top-0 z-40 w-full bg-white-90 backdrop-blur border-b-1 border-transparent lt-md:!border-gray-200/60 h-16 px-8 lt-md:!px-4`}
     >
       <div />
       <div>
