@@ -6,13 +6,23 @@
     "dev:all": "pnpm run -r --if-present dev",
     "precommit": "lint-staged",
     "format": "prettier --write .",
-    "lint": "eslint --ext ts,tsx ."
+    "lint": "eslint --ext ts,tsx .",
+    "generate": "graphql-codegen --config codegen.yml",
+    "prestart": "pnpm generate",
+    "predev": "pnpm generate"
   },
   "engines": {
     "node": ">=16",
     "pnpm": ">=7.9"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "2.11.6",
+    "@graphql-codegen/introspection": "2.2.1",
+    "@graphql-codegen/typescript": "2.7.3",
+    "@graphql-codegen/typescript-operations": "2.5.3",
+    "@graphql-codegen/typescript-resolvers": "2.7.3",
+    "@graphql-codegen/typescript-urql": "^3.6.4",
+    "@graphql-eslint/eslint-plugin": "^3.10.7",
     "@typescript-eslint/eslint-plugin": "^5.33.1",
     "@typescript-eslint/parser": "^5.33.1",
     "@unocss/reset": "^0.45.8",
