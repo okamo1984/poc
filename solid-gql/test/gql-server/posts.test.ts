@@ -19,6 +19,5 @@ describe("posts", () => {
       })
 
     expect(response.status).equal(200)
-    console.log(response.body.data.posts)
   })
 })
