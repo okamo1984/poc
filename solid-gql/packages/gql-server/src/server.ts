@@ -24,4 +24,4 @@ const server = createServer({
   renderGraphiQL,
 })
 
-server.start()
+export default server
