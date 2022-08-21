@@ -1,5 +1,5 @@
 {
-  "name": "solid-start-app",
+  "name": "@solid-gql/solid-start-app",
   "scripts": {
     "dev": "solid-start dev",
     "build": "solid-start build",

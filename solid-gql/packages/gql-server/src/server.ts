@@ -8,12 +8,15 @@ const typeDefs = readFileSync("./schema.graphql", "utf8")
 const resolvers: Resolvers = {
   Query: {
     posts: (parent, args, context, info) => {
-        return []
+      return []
     },
   },
 }
 
 const server = createServer({
+  hostname: "localhost",
+  port: 4000,
+  endpoint: "/api/graphql",
   schema: {
     typeDefs,
     resolvers,
