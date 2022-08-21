@@ -5,6 +5,7 @@
   "type": "module",
   "dependencies": {
     "@graphql-yoga/node": "^2.13.8",
+    "@graphql-yoga/render-graphiql": "^2.13.7",
     "graphql": "^16.6.0"
   }
 }

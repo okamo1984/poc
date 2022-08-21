@@ -39,9 +39,11 @@ importers:
   packages/gql-server:
     specifiers:
       '@graphql-yoga/node': ^2.13.8
+      '@graphql-yoga/render-graphiql': ^2.13.7
       graphql: ^16.6.0
     dependencies:
       '@graphql-yoga/node': 2.13.8_graphql@16.6.0
+      '@graphql-yoga/render-graphiql': 2.13.7
       graphql: 16.6.0
 
   packages/solid-start-app:
@@ -1869,6 +1871,12 @@ packages:
       tslib: 2.4.0
     transitivePeerDependencies:
       - encoding
+    dev: false
+
+  /@graphql-yoga/render-graphiql/2.13.7:
+    resolution: {integrity: sha512-JeKHPQ2iQY+prF1+8sq7TfuU8S82BlD7hnlZrbaom2Sxu6GjCGjExxjHWxpGn3EqT47zfcq8R78x+vW7RERxrA==}
+    peerDependencies:
+      '@graphql-yoga/common': ^2.12.7
     dev: false
 
   /@graphql-yoga/subscription/2.2.3:
