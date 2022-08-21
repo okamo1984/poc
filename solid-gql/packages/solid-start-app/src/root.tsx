@@ -11,7 +11,9 @@ import {
   Scripts,
   Title,
 } from "solid-start"
+import "@unocss/reset/tailwind.css"
 import "uno.css"
+import "./root.css"
 
 export default function Root() {
   return (
