@@ -2,10 +2,17 @@
   "name": "@solid-gql/gql-server",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
   "dependencies": {
     "@graphql-yoga/node": "^2.13.8",
     "@graphql-yoga/render-graphiql": "^2.13.7",
-    "graphql": "^16.6.0"
+    "graphql": "^16.6.0",
+    "graphql-import-node": "^0.0.5"
+  },
+  "scripts": {
+    "build": "esbuild src/main.ts --bundle --platform=node --outfile=dist/main.cjs --loader:.graphql=copy",
+    "clean": "rimraf dist"
+  },
+  "devDependencies": {
+    "esbuild": "^0.15.5"
   }
 }

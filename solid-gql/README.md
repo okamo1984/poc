@@ -24,3 +24,9 @@
 
 - https://pnpm.io/cli/add#install-from-local-file-system
 -
+
+### esbuild
+
+- https://esbuild.github.io/content-types/#no-type-system
+- https://github.com/evanw/esbuild/issues/946
+- https://github.com/ardatan/graphql-import-node
