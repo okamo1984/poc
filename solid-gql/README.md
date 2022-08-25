@@ -11,6 +11,7 @@
 - https://www.graphql-tools.com/docs/mocking
 - https://www.envelop.dev/plugins/use-auth0
 - https://www.graphql-yoga.com/docs/features/envelop-plugins
+- https://www.envelop.dev/plugins/use-response-cache
 
 ### Solid
 

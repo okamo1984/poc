@@ -54,6 +54,7 @@ importers:
   packages/gql-server:
     specifiers:
       '@envelop/auth0': ^3.5.0
+      '@envelop/response-cache': ^3.1.0
       '@envelop/validation-cache': ^4.6.0
       '@graphql-yoga/node': ^2.13.8
       '@graphql-yoga/render-graphiql': ^2.13.7
@@ -62,6 +63,7 @@ importers:
       graphql-import-node: ^0.0.5
     dependencies:
       '@envelop/auth0': 3.5.0_graphql@16.6.0
+      '@envelop/response-cache': 3.1.0_graphql@16.6.0
       '@envelop/validation-cache': 4.6.0_graphql@16.6.0
       '@graphql-yoga/node': 2.13.8_graphql@16.6.0
       '@graphql-yoga/render-graphiql': 2.13.7
@@ -1319,6 +1321,18 @@ packages:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
       '@envelop/core': 2.5.0_graphql@16.6.0
+      graphql: 16.6.0
+      lru-cache: 6.0.0
+    dev: false
+
+  /@envelop/response-cache/3.1.0_graphql@16.6.0:
+    resolution: {integrity: sha512-vgdAbxJ5K4YDx5d+fmvRLy8Xg/z9/SFnpdLRSulBEZe+ltdpwjNTBAJk7huBz3a5mD2AhURMlMA91UXF/kHAZQ==}
+    peerDependencies:
+      '@envelop/core': ^2.5.0
+      graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
+    dependencies:
+      '@graphql-tools/utils': 8.10.0_graphql@16.6.0
+      fast-json-stable-stringify: 2.1.0
       graphql: 16.6.0
       lru-cache: 6.0.0
     dev: false
@@ -4082,7 +4096,6 @@ packages:
 
   /fast-json-stable-stringify/2.1.0:
     resolution: {integrity: sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==}
-    dev: true
 
   /fast-levenshtein/2.0.6:
     resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
