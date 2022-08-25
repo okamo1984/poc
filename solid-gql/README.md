@@ -9,6 +9,8 @@
 - https://www.graphql-yoga.com/docs/features/testing
 - https://www.graphql-yoga.com/docs/quick-start
 - https://www.graphql-tools.com/docs/mocking
+- https://www.envelop.dev/plugins/use-auth0
+- https://www.graphql-yoga.com/docs/features/envelop-plugins
 
 ### Solid
 

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "dependencies": {
+    "@envelop/auth0": "^3.5.0",
     "@graphql-yoga/node": "^2.13.8",
     "@graphql-yoga/render-graphiql": "^2.13.7",
     "graphql": "^16.6.0",
@@ -10,6 +11,7 @@
   },
   "scripts": {
     "build": "esbuild src/main.ts --bundle --platform=node --outfile=dist/main.cjs --loader:.graphql=copy",
+    "dev": "pnpm clean && pnpm build && node dist/main.cjs",
     "clean": "rimraf dist"
   },
   "devDependencies": {

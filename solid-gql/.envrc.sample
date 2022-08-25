@@ -1,0 +1,2 @@
+export AUTH0_DOMAIN=
+export AUTH0_AUDIENCE=
