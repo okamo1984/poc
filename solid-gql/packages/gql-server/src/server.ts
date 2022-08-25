@@ -4,6 +4,7 @@ import { useAuth0 } from "@envelop/auth0"
 import { renderGraphiQL } from "@graphql-yoga/render-graphiql"
 import { useValidationCache } from "@envelop/validation-cache"
 import { useResponseCache } from "@envelop/response-cache"
+import { useGraphQlJit } from "@envelop/graphql-jit"
 
 const createYogaServer = (schema) =>
   createServer({
@@ -28,6 +29,7 @@ const createYogaServer = (schema) =>
       useResponseCache({
         session: () => null,
       }),
+      useGraphQlJit({ customJSONSerializer: true }),
     ],
   })
 
