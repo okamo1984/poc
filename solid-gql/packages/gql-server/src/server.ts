@@ -2,6 +2,7 @@ import { createServer } from "@graphql-yoga/node"
 import { useAuth0 } from "@envelop/auth0"
 
 import { renderGraphiQL } from "@graphql-yoga/render-graphiql"
+import { useValidationCache } from "@envelop/validation-cache"
 
 const createYogaServer = (schema) =>
   createServer({
@@ -22,6 +23,7 @@ const createYogaServer = (schema) =>
           console.warn(e)
         },
       }),
+      useValidationCache(),
     ],
   })
 
