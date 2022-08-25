@@ -13,8 +13,7 @@ importers:
       '@graphql-eslint/eslint-plugin': ^3.10.7
       '@graphql-tools/mock': ^8.7.3
       '@graphql-tools/schema': ^9.0.1
-      '@solid-gql/gql-server': link:packages/gql-server
-      '@solid-gql/solid-start-app': link:packages/solid-start-app
+      '@solid-gql/gql-server': file:packages/gql-server
       '@typescript-eslint/eslint-plugin': ^5.33.1
       '@typescript-eslint/parser': ^5.33.1
       '@unocss/reset': ^0.45.8
@@ -27,8 +26,7 @@ importers:
       vite: ^3.0.4
       vitest: ^0.22.1
     dependencies:
-      '@solid-gql/gql-server': link:packages/gql-server
-      '@solid-gql/solid-start-app': link:packages/solid-start-app
+      '@solid-gql/gql-server': file:packages/gql-server
     devDependencies:
       '@graphql-codegen/cli': 2.11.6_typescript@4.7.4
       '@graphql-codegen/introspection': 2.2.1
@@ -59,10 +57,12 @@ importers:
       '@envelop/validation-cache': ^4.6.0
       '@graphql-yoga/node': ^2.13.8
       '@graphql-yoga/render-graphiql': ^2.13.7
+      '@prisma/client': 4.2.1
       esbuild: ^0.15.5
       graphql: ^16.6.0
       graphql-import-node: ^0.0.5
       nodemon: ^2.0.19
+      prisma: ^4.2.1
     dependencies:
       '@envelop/auth0': 3.5.0_graphql@16.6.0
       '@envelop/graphql-jit': 4.5.0_graphql@16.6.0
@@ -70,11 +70,13 @@ importers:
       '@envelop/validation-cache': 4.6.0_graphql@16.6.0
       '@graphql-yoga/node': 2.13.8_graphql@16.6.0
       '@graphql-yoga/render-graphiql': 2.13.7
+      '@prisma/client': 4.2.1_prisma@4.2.1
       graphql: 16.6.0
       graphql-import-node: 0.0.5_graphql@16.6.0
     devDependencies:
       esbuild: 0.15.5
       nodemon: 2.0.19
+      prisma: 4.2.1
 
   packages/solid-start-app:
     specifiers:
@@ -2137,6 +2139,28 @@ packages:
 
   /@polka/url/1.0.0-next.21:
     resolution: {integrity: sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==}
+
+  /@prisma/client/4.2.1_prisma@4.2.1:
+    resolution: {integrity: sha512-PZBkY60+k5oix+e6IUfl3ub8TbRLNsPLdfWrdy2eh80WcHTaT+/UfvXf/B7gXedH7FRtbPFHZXk1hZenJiJZFQ==}
+    engines: {node: '>=14.17'}
+    requiresBuild: true
+    peerDependencies:
+      prisma: '*'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+    dependencies:
+      '@prisma/engines-version': 4.2.0-33.2920a97877e12e055c1333079b8d19cee7f33826
+      prisma: 4.2.1
+    dev: false
+
+  /@prisma/engines-version/4.2.0-33.2920a97877e12e055c1333079b8d19cee7f33826:
+    resolution: {integrity: sha512-tktkqdiwqE4QhmE088boPt+FwPj1Jub/zk+5F6sEfcRHzO5yz9jyMD5HFVtiwxZPLx/8Xg9ElnuTi8E5lWVQFQ==}
+    dev: false
+
+  /@prisma/engines/4.2.1:
+    resolution: {integrity: sha512-0KqBwREUOjBiHwITsQzw2DWfLHjntvbqzGRawj4sBMnIiL5CXwyDUKeHOwXzKMtNr1rEjxEsypM14g0CzLRK3g==}
+    requiresBuild: true
 
   /@repeaterjs/repeater/3.0.4:
     resolution: {integrity: sha512-AW8PKd6iX3vAZ0vA43nOUOnbq/X5ihgU+mSXXqunMkeQADGiqw/PY0JNeYtD5sr0PAy51YPgAPbDoeapv9r8WA==}
@@ -5610,6 +5634,14 @@ packages:
     hasBin: true
     dev: true
 
+  /prisma/4.2.1:
+    resolution: {integrity: sha512-HuYqnTDgH8atjPGtYmY0Ql9XrrJnfW7daG1PtAJRW0E6gJxc50lY3vrIDn0yjMR3TvRlypjTcspQX8DT+xD4Sg==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      '@prisma/engines': 4.2.1
+
   /promise/7.3.1:
     resolution: {integrity: sha512-nolQXZ/4L+bP/UGlkfaIujX9BKxGwmQ9OT4mOt5yvy8iK1h3wqTEJCijzGANTCCl9nWjY41juyAn2K3Q1hLLTg==}
     dependencies:
@@ -6778,3 +6810,23 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  file:packages/gql-server:
+    resolution: {directory: packages/gql-server, type: directory}
+    name: '@solid-gql/gql-server'
+    version: 1.0.0
+    dependencies:
+      '@envelop/auth0': 3.5.0_graphql@16.6.0
+      '@envelop/graphql-jit': 4.5.0_graphql@16.6.0
+      '@envelop/response-cache': 3.1.0_graphql@16.6.0
+      '@envelop/validation-cache': 4.6.0_graphql@16.6.0
+      '@graphql-yoga/node': 2.13.8_graphql@16.6.0
+      '@graphql-yoga/render-graphiql': 2.13.7
+      graphql: 16.6.0
+      graphql-import-node: 0.0.5_graphql@16.6.0
+    transitivePeerDependencies:
+      - '@envelop/core'
+      - '@graphql-yoga/common'
+      - encoding
+      - supports-color
+    dev: false

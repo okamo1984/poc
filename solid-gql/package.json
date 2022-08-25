@@ -42,8 +42,7 @@
     "vitest": "^0.22.1"
   },
   "dependencies": {
-    "@solid-gql/gql-server": "link:packages/gql-server",
-    "@solid-gql/solid-start-app": "link:packages/solid-start-app"
+    "@solid-gql/gql-server": "file:packages/gql-server"
   },
   "packageManager": "pnpm@7.9.3"
 }

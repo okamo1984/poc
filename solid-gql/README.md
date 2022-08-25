@@ -34,3 +34,13 @@
 - https://esbuild.github.io/content-types/#no-type-system
 - https://github.com/evanw/esbuild/issues/946
 - https://github.com/ardatan/graphql-import-node
+
+### misc
+
+- https://github.com/remy/nodemon/issues/1676
+- 
+
+### prisma
+
+- https://www.prisma.io/docs/getting-started/quickstart
+- https://planetscale.com/docs/tutorials/automatic-prisma-migrations
