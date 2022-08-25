@@ -6,6 +6,5 @@ export default defineConfig({
   },
   test: {
     isolate: false,
-    setupFiles: ["./test/gql-server/setup.ts"],
   },
 })

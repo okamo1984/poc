@@ -12,7 +12,7 @@
     "generate": "graphql-codegen --config codegen.yml",
     "prestart": "pnpm generate",
     "predev": "pnpm generate",
-    "test": "vitest",
+    "test": "pnpm run -r --if-present test",
     "coverage": "vitest run --coverage"
   },
   "engines": {
@@ -27,16 +27,12 @@
     "@graphql-codegen/typescript-resolvers": "2.7.3",
     "@graphql-codegen/typescript-urql": "^3.6.4",
     "@graphql-eslint/eslint-plugin": "^3.10.7",
-    "@graphql-tools/mock": "^8.7.3",
-    "@graphql-tools/schema": "^9.0.1",
     "@typescript-eslint/eslint-plugin": "^5.33.1",
     "@typescript-eslint/parser": "^5.33.1",
-    "@unocss/reset": "^0.45.8",
     "eslint": "^8.22.0",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
-    "supertest": "^6.2.4",
     "typescript": "^4.4.3",
     "vite": "^3.0.4",
     "vitest": "^0.22.1"

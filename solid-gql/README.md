@@ -38,9 +38,17 @@
 ### misc
 
 - https://github.com/remy/nodemon/issues/1676
-- 
+-
 
 ### prisma
 
 - https://www.prisma.io/docs/getting-started/quickstart
 - https://planetscale.com/docs/tutorials/automatic-prisma-migrations
+
+### nestjs
+
+- https://docs.nestjs.com/
+- https://www.graphql-yoga.com/docs/integrations/integration-with-nestjs
+- https://github.com/nestjs/nest/tree/master/sample/22-graphql-prisma/src
+- https://docs.nestjs.com/graphql/resolvers#schema-first
+- Pin @nestjs/graphql module version

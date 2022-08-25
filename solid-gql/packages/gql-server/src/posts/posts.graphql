@@ -1,0 +1,31 @@
+type Author {
+  id: Int!
+  firstName: String!
+  lastName: String!
+  posts(findTitle: String): [Post]
+}
+
+type Post {
+  id: Int!
+  title: String!
+  author: Author
+}
+
+input CreatePostInput {
+  title: String
+}
+
+input UpdatePostInput {
+  id: Int!
+}
+
+type Query {
+  posts: [Post]!
+  post(id: Int!): Post
+}
+
+type Mutation {
+  createPost(createPostInput: CreatePostInput!): Post!
+  updatePost(updatePostInput: UpdatePostInput!): Post!
+  removePost(id: Int!): Post
+}
