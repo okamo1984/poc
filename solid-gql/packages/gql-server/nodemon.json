@@ -1,0 +1,9 @@
+{
+  "verbose": true,
+  "ignore": ["src/**/*.ts", "node_modules/**"],
+  "watch": ["./dist/main.cjs"],
+  "ext": "cjs",
+  "execMap": {
+    "cjs": "node"
+  }
+}

@@ -14,10 +14,11 @@
   },
   "scripts": {
     "build": "esbuild src/main.ts --bundle --platform=node --outfile=dist/main.cjs --loader:.graphql=copy",
-    "dev": "pnpm clean && pnpm build && node dist/main.cjs",
+    "dev": "pnpm clean && pnpm build && nodemon dist/main.cjs",
     "clean": "rimraf dist"
   },
   "devDependencies": {
-    "esbuild": "^0.15.5"
+    "esbuild": "^0.15.5",
+    "nodemon": "^2.0.19"
   }
 }
