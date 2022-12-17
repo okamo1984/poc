@@ -1,0 +1,71 @@
+[tool.poetry]
+name = "speedrun"
+version = "0.1.0"
+description = ""
+authors = ["ここ <koichirookamoto@icloud.com>"]
+
+include = ["speedrun/.env"]
+exclude = ["speedrun/sample.env"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+uvicorn = { version = "^0.13.4", extras = ["standard"] }
+fastapi = "^0.63.0"
+azure-mgmt-compute = { version = "^19.0.0", optional = true }
+azure-mgmt-network = { version = "^18.0.0", optional = true }
+azure-identity = { version = "^1.5.0", optional = true }
+paramiko = "^2.7.2"
+python-dotenv = "^0.15.0"
+azure-servicebus = { version = "^7.1.0", optional = true }
+
+[tool.poetry.dev-dependencies]
+pre-commit = "^2.10.1"
+black = "^20.8b1"
+pytest = "^6.2.2"
+isort = "^5.7.0"
+mypy = "^0.812"
+flake8 = "^3.8.4"
+
+[tool.poetry.extras]
+azure = [
+  "azure-mgmt-compute",
+  "azure-mgmt-network",
+  "azure-identity",
+  "azure-servicebus",
+]
+
+[tool.poetry.scripts]
+speedrun = 'speedrun.cli.speedrun:main'
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 100
+target-version = ['py36', 'py37', 'py38']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  # The following are specific to Black, you probably don't want those.
+  | blib2to3
+  | tests/data
+  | profiling
+)/
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+balanced_wrapping = true
+src_paths = ["speedrun", "tests"]

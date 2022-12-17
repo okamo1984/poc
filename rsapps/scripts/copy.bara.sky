@@ -1,0 +1,16 @@
+core.workflow(
+    name = "default",
+    origin = git.origin(
+      url = "file:///Users/koko/GitHub/rsapps/",
+      ref = "main"
+    ),
+    destination = git.github_destination(
+        url = "https://github.com/koichirock/todo-yew-graphql.git",
+        push = "main"
+    ),
+
+    # Copy everything but don't remove a README_INTERNAL.txt file if it exists.
+    destination_files = glob(["**"], exclude = ["scripts/*"]),
+
+    authoring = authoring.pass_thru("koichirock <kochirookamoto@icloud.com>"),
+)

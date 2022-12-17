@@ -1,0 +1,43 @@
+{
+  "variables": {
+    "client_id": "",
+    "client_secret": "",
+    "tenant_id": "",
+    "subscription_id": "",
+    "image_name": ""
+  },
+  "builders": [
+    {
+      "type": "azure-arm",
+
+      "client_id": "{{user `client_id`}}",
+      "client_secret": "{{user `client_secret`}}",
+      "tenant_id": "{{user `tenant_id`}}",
+      "subscription_id": "{{user `subscription_id`}}",
+
+      "managed_image_resource_group_name": "speedrun",
+      "managed_image_name": "{{user `image_name`}}",
+
+      "os_type": "Linux",
+      "image_publisher": "Canonical",
+      "image_offer": "UbuntuServer",
+      "image_sku": "18.04-LTS",
+
+      "location": "Japan East",
+      "vm_size": "Standard_DS2_v2",
+
+      "ssh_username": "speedrun"
+    }
+  ],
+  "provisioners": [
+    {
+      "source": "../dist/speedrun-0.1.0-py3-none-any.whl",
+      "destination": "speedrun-0.1.0-py3-none-any.whl",
+      "type": "file"
+    },
+    {
+      "script": "setup.sh",
+      "type": "shell"
+    }
+  ]
+}

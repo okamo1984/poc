@@ -1,0 +1,10 @@
+[package]
+name = "todo"
+version = "0.1.0"
+
+[[bin]]
+name = "todo-server"
+path = "server/src/main.rs"
+
+[workspace]
+members = ["yewapp", "server"]

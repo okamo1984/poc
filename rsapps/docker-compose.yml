@@ -1,0 +1,53 @@
+version: "3.8"
+
+services:
+  todo_postgres:
+    container_name: todo_postgres
+    build:
+      context: .
+      dockerfile: Dockerfile.postgres
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "P@ssw0rd!"
+      PGDATA: "/data/postgres"
+      POSTGRES_DB: "todo"
+    ports:
+      - 15432:5432
+    volumes:
+      - todo_postgres:/data/postgres
+    restart: unless-stopped
+    networks:
+      - todo
+
+  todo_server:
+    container_name: todo_server
+    build:
+      context: server
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: postgres://postgres:P@ssw0rd!@todo_postgres:5432/todo
+      JWT_SECRET: jwtsecret
+    ports:
+      - 8081:8081
+    restart: unless-stopped
+    networks:
+      - todo
+
+  todo_yewapp:
+    container_name: todo_yewapp
+    build:
+      context: yewapp
+      dockerfile: Dockerfile
+      args:
+        GRAPHQL_ENDPOINT: http://localhost:8081/graphql
+    ports:
+      - 8080:80
+    restart: unless-stopped
+    networks:
+      - todo
+
+volumes:
+  todo_postgres:
+
+networks:
+  todo:
