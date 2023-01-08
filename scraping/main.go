@@ -13,7 +13,9 @@ import (
 	"net/http"
 	"os"
 	"os/exec"
+	"path"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/gocolly/colly/v2"
@@ -115,41 +117,77 @@ func getImagesWithCurl(images []image, dir string) error {
 	return nil
 }
 
+type patternFunc = func(alt, name string) bool
+
+func defaultPattern(alt, name string) bool {
+	return true
+}
+
+func simplePattern(alt, name string) bool {
+	return strings.Contains(alt, name) || strings.Contains(name, alt)
+}
+
+type ListForSave struct {
+	URL  string `json:"url"`
+	Name string `json:"name"`
+}
+
 func main() {
 	var (
-		url string
-		dir string
+		dir     string
+		list    string
+		source  string
+		pattern patternFunc = defaultPattern
 	)
-	flag.StringVar(&url, "url", "", "URL for scraping")
 	flag.StringVar(&dir, "dir", "", "Save directory")
+	flag.StringVar(&list, "list", "", "URL list file for save")
+	flag.StringVar(&source, "source", "", "Source web site")
 	flag.Parse()
 
-	c := colly.NewCollector()
-	images := make([]image, 0)
+	if source == "" {
+		pattern = simplePattern
+	}
 
-	c.OnHTML("img", func(h *colly.HTMLElement) {
-		alt := h.Attr("alt")
-		src := h.Attr("src")
-		newImage := image{
-			Alt: alt,
-			Src: src,
-		}
-		images = append(images, newImage)
-	})
-
-	c.Visit(url)
-
-	// if err := createDirectory(dir); err != nil {
-	// 	log.Fatalln(err)
-	// }
-	// if err := getImages(images, dir); err != nil {
-	// 	log.Fatalln(err)
-	// }
-	data, err := json.MarshalIndent(images, "", "  ")
+	listdata, err := ioutil.ReadFile(list)
 	if err != nil {
+		log.Fatal(err)
+	}
+
+	var listForSave []ListForSave
+	if err := json.Unmarshal(listdata, &listForSave); err != nil {
+		log.Fatal(err)
+	}
+
+	if err := createDirectory(dir); err != nil {
 		log.Fatalln(err)
 	}
-	if err := ioutil.WriteFile(fmt.Sprintf("%s.json", dir), data, 0755); err != nil {
-		log.Fatalln(err)
+
+	c := colly.NewCollector()
+
+	for _, d := range listForSave {
+		images := make([]image, 0)
+
+		c.OnHTML("img", func(h *colly.HTMLElement) {
+			alt := h.Attr("alt")
+			if !pattern(alt, d.Name) {
+				return
+			}
+			src := h.Attr("src")
+			newImage := image{
+				Alt: alt,
+				Src: src,
+			}
+			images = append(images, newImage)
+		})
+
+		c.Visit(d.URL)
+
+		data, err := json.MarshalIndent(images, "", "  ")
+		if err != nil {
+			log.Fatalln(err)
+		}
+		if err := ioutil.WriteFile(path.Join(dir, fmt.Sprintf("%s.json", d.Name)), data, 0755); err != nil {
+			log.Fatalln(err)
+		}
 	}
 }
