@@ -124,7 +124,7 @@ func defaultPattern(alt, name string) bool {
 }
 
 func simplePattern(alt, name string) bool {
-	return strings.Contains(alt, name) || strings.Contains(name, alt)
+	return alt != "" && (strings.Contains(alt, name) || strings.Contains(name, alt))
 }
 
 type ListForSave struct {

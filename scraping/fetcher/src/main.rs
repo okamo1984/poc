@@ -21,8 +21,9 @@ fn create_async_task(dir: String, filename: String) -> JoinHandle<anyhow::Result
         let file = File::open(Path::new(dir.as_str()).join(filename.to_owned()))?;
         let reader = BufReader::new(file);
         let saved_image = Path::new(filename.as_str());
-        if !saved_image.exists() {
-            create_dir(saved_image)?;
+        let dir =  Path::new(saved_image.file_stem().unwrap());
+        if !dir.exists() {
+            create_dir(dir)?;
         }
         let images: Vec<Image> = serde_json::from_reader(reader)?;
         for (i, image) in images.iter().enumerate() {
@@ -33,7 +34,7 @@ fn create_async_task(dir: String, filename: String) -> JoinHandle<anyhow::Result
                 .to_str()
                 .unwrap();
             write(
-                saved_image.join(format!("{}.{}", i, image_extension)),
+                dir.join(format!("{}.{}", i, image_extension)),
                 image_data,
             )?;
         }
